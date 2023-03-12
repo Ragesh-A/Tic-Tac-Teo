@@ -16,6 +16,7 @@ function boxClicked(e) {
   let value = e.target.innerText;
 
   if (!spaces[id] && value == '') {
+    playSoundEffect('click')
     spaces[id] = currentPlayer;
     e.target.innerText = currentPlayer;
     winner()
@@ -40,9 +41,10 @@ function winner() {
     if (spaces[a] && spaces[a] == spaces[b] && spaces[a] == spaces[c]) {
       title.innerText = `${currentPlayer} has won`;
       boxesdisplay('none');
+      playSoundEffect('win')
       return;
-    }
-    gameDraw()
+    }else{
+    gameDraw()}
     return;
   });
 }
@@ -57,6 +59,7 @@ function gameDraw(){
   if(empty == 0){
     title.innerText = 'match draw!';
     boxesdisplay('none');
+    playSoundEffect('draw')
   }
 }
 
@@ -76,4 +79,14 @@ function boxesdisplay(value) {
   boxes.forEach((box) => {
     box.style.display = value;
   });
+}
+
+function playSoundEffect(sound) {
+  let soundEffect;
+  switch(sound){
+    case 'win' : soundEffect = new Audio('./sound/win.mp3'); break;
+    case 'draw' : soundEffect = new Audio('./sound/draw.mp3'); break;
+    case 'click' : soundEffect = new Audio('./sound/chalk.mp3'); break;
+  }
+  soundEffect.play();
 }
