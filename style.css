@@ -1,0 +1,66 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Finger Paint', cursive;
+  background-image: url('./board.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+.container{
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#gameboard{
+  max-width: 450px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+}
+.message-wrap{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.title{
+  font-size: 3rem;
+}
+#restartBtn{
+  padding: 10px 15px;
+  margin: 1rem;
+  border-radius: 5px;
+  border: none;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+#restartBtn:hover{
+  background-color: #ffffff4c;
+  color: #fff;
+}
+.box{
+  width: 150px;
+  height: 150px;
+  border: 2px solid transparent;
+  border-color: transparent #fff #fff transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+}
+.box:nth-child(3n){
+  border-right: transparent;
+}
+.box:nth-child(6n)~.box{
+  border-bottom: transparent;
+}
