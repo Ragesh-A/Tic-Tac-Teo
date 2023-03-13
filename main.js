@@ -24,7 +24,7 @@ function boxClicked(e) {
   }
 }
 
-const winningCompination = [
+const winningCombination = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -32,21 +32,26 @@ const winningCompination = [
   [1, 4, 7],
   [2, 5, 8],
   [0, 4, 8],
-  [2, 4, 6]
+  [2, 4, 6],
 ];
 
 function winner() {
-  winningCompination.forEach((combination) => {
+  let win = false;
+  
+  winningCombination.forEach((combination) => {
+    if (win == true) {
+        return;
+    }
     const [a, b, c] = combination;
     if (spaces[a] && spaces[a] == spaces[b] && spaces[a] == spaces[c]) {
+      win = true;
       title.innerText = `${currentPlayer} has won`;
       boxesdisplay('none');
       playSoundEffect('win')
       return;
-    }else{
-    gameDraw()}
-    return;
+    }
   });
+  if (!win) gameDraw();
 }
 
 function gameDraw(){
@@ -70,7 +75,7 @@ restartBtn.onclick = function () {
     box.innerHTML = '';
   });
   currentPlayer = X_text;
-  title.innerText = 'Tic Tacc Teo';
+  title.innerText = 'Tic Tac Toe';
   messageWrap.style.display = 'none';
   boxesdisplay('flex');
 };
