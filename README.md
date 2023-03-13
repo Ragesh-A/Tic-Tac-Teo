@@ -1,2 +1,2 @@
 # Tic-Tac-Teo
-a simple tic rac teo game
+A simple tic tac toe game
